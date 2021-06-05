@@ -1,4 +1,4 @@
-Feature: Database usage
+Feature: Database usage MySQL
 
   Background:
     * Connect to MySQL city database

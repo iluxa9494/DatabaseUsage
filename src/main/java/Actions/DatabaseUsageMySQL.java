@@ -1,9 +1,11 @@
 package Actions;
 
 import io.cucumber.datatable.DataTable;
+import org.testng.Assert;
+
 import java.sql.*;
 
-public class DatabaseUsage {
+public class DatabaseUsageMySQL {
     public static Connection con;
 
     public void connectToMySQL() throws ClassNotFoundException, SQLException {
@@ -40,8 +42,8 @@ public class DatabaseUsage {
             String countryCode = resultSet.getString("CountryCode");
             String district = resultSet.getString("District");
             int population = resultSet.getInt("Population");
-            System.out.println(id == idCheck && name.equals(elements.get(3)) && countryCode.equals(elements.get(5)) &&
-                    district.equals(elements.get(7)) && population == populationCheck ? "PASSED" : "FAILED");
+            check(id == idCheck && name.equals(elements.get(3)) && countryCode.equals(elements.get(5)) &&
+                    district.equals(elements.get(7)) && population == populationCheck);
         }
     }
 
@@ -60,5 +62,13 @@ public class DatabaseUsage {
         Statement statement = con.createStatement();
         statement.execute("delete from city where " + elements.get(0) + " = " + id + "");
         System.out.println("PASSED");
+    }
+
+    public void check(boolean arg1) {
+        if (arg1) {
+            System.out.println("PASSED");
+        } else {
+            Assert.fail("FAILED");
+        }
     }
 }

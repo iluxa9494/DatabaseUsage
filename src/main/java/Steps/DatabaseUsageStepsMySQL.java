@@ -1,12 +1,12 @@
 package Steps;
 
-import Actions.DatabaseUsage;
+import Actions.DatabaseUsageMySQL;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import java.sql.SQLException;
 
-public class DatabaseUsageSteps {
-    DatabaseUsage databaseUsage = new DatabaseUsage();
+public class DatabaseUsageStepsMySQL {
+    DatabaseUsageMySQL databaseUsage = new DatabaseUsageMySQL();
 
     @Then("Connect to MySQL city database")
     public void connection() throws SQLException, ClassNotFoundException {
